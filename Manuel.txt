@@ -1,0 +1,54 @@
+Rehefa ampiasa bdd:
+$db = new Database() ;
+
+Select sans parametre: SELECT * FROM table 
+$res = $db->select("table")
+          ->execute(null) ;
+
+Select avec parametre: SELECT champ1, champ3, ... FROM table
+$res = $db->select("table")
+          ->parametters(["champ2", "champ3", "..."])
+          ->execute(null) ;
+
+Select avec conditions:
+$res = $db->select("table")
+          ->where("champs","operande")
+          ->execute([valeurDuChamp]) ;
+
+$res = $db->select("table")
+          ->where("champs","operande")
+          ->and("champs","operande")
+          ->execute([valeurDuChamp, valeurDuChamp]) ;
+
+
+
+$res est de la forme $res[indice]->champTable 
+
+
+INSERT:
+$db->insert("table")
+   ->parametters(["champ1","champ2","champ3",...])
+   ->execute([valeur1,valeur2,valeur3,...]) ;
+
+DELETE:
+$db->delete("table")
+   ->where("champ","operande")
+   ->execute([valeur]) ;
+
+UPDATE:
+$db->update("table")
+   ->parametters([champ1,champ2,champ3,...])
+   ->where("champ","operande")
+   ->execute([valeur1,valeur2,valeur3,valeurDeWhere]) ;
+
+
+Operande:
+   =
+   <
+   >
+   <>
+   >=
+   <=
+   LIKE
+   ...
+
